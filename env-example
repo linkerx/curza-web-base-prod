@@ -1,0 +1,12 @@
+MYSQL_ROOT_PASSWORD=pass
+MYSQL_DATABASE=dbase
+MYSQL_USER=user
+MYSQL_PASSWORD=pass
+
+WP_API_PREFIX=api
+FRONTEND_URL=https://example.com
+DEFAULT_IMG_URL=https://example.com/image.jpg
+
+### PORTS ###
+BACKEND_PORT=80
+FRONTEND_PORT=3000

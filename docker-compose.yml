@@ -1,0 +1,38 @@
+version: '2'
+
+services:
+  frontend:
+    image: linkerx/curza-front
+    restart: always
+    ports:
+      - "${FRONTEND_PORT}:80"
+    environment:
+      DB_HOST: 'curza-db'
+      DB_USER: '${MYSQL_USER}'
+      DB_PASSWORD: '${MYSQL_PASSWORD}'
+      DB_NAME: '${MYSQL_DATABASE}'
+   
+  wordpress:
+    image: linkerx/curza-wordpress
+    restart: always
+    volumes:
+      - ./src/wordpress:/var/www/html
+    environment:
+      FRONTEND_URL: '${FRONTEND_URL}'
+      WP_API_PREFIX: '${WP_API_PREFIX}'
+      WORDPRESS_DB_HOST: 'curza-db'
+      WORDPRESS_DB_USER: '${MYSQL_USER}'
+      WORDPRESS_DB_PASSWORD: '${MYSQL_PASSWORD}'
+      WORDPRESS_DB_NAME: '${MYSQL_DATABASE}'
+    ports:
+      - "${BACKEND_PORT}:80"
+
+  wordpress-db:
+    image: mariadb:10.2
+    environment:
+      MYSQL_ROOT_PASSWORD: '${MYSQL_ROOT_PASSWORD}'
+      MYSQL_DATABASE: '${MYSQL_DATABASE}'
+      MYSQL_USER: '${MYSQL_USER}'
+      MYSQL_PASSWORD: '${MYSQL_PASSWORD}'
+    volumes:
+     - ./data/mysql:/var/lib/mysql
