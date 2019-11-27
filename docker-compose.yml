@@ -54,4 +54,4 @@ services:
     external_links:
       - curza-db:db
     ports:
-      - 82:80
+      - "${DBADMIN_PORT}:80"
