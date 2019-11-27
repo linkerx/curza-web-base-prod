@@ -2,8 +2,8 @@ version: '2'
 
 services:
   curza-frontend:
-    image: curza_front
-    container_name: linkerx/curza-front
+    image: linkerx/curza-front
+    container_name: curza-front
     restart: always
     ports:
       - "${FRONT_PORT}:80"
