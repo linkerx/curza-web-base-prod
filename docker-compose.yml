@@ -3,7 +3,7 @@ version: '2'
 services:
   curza-frontend:
     image: curza_front
-    container_name: curza-frontend
+    container_name: linkerx/curza-front
     restart: always
     ports:
       - "${FRONT_PORT}:80"
@@ -12,6 +12,8 @@ services:
       DB_USER: '${MYSQL_USER}'
       DB_PASS: '${MYSQL_PASSWORD}'
       DB_NAME: '${MYSQL_DATABASE}'
+      FRONTEND_URL: '${FRONTEND_URL}'
+      DEFAULT_IMG_URL: '${DEFAULT_IMG_URL}'
 
   curza-wordpress:
     restart: always
